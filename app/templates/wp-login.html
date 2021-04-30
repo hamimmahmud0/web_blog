@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %} Login {% endblock %}
+{% block css %} 
+	<link rel="stylesheet" href="home-style.css"/> {% endblock %}
+{% block body %}
+
+<div class="wrapper">
+	<div class="container-sm login-panel">
+		<div class="row">
+		<div class="col">
+			<form action="/login" method="post">
+				<div class="row">
+					<input class="form-control" type="text" name="usr">
+				</div>
+				<div class="row">
+					<input class="form-control" type="password" name="ps">
+				</div>
+				<div class="row">
+					<input type="submit" class="form-control" name="submit" value="Log In">
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
+
+{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+</head>
+<body>
+<div class="wrapper">
+	<div class="login-panel">
+		<div class="column">
+			<form action="/login" method="post">
+				<div class="row">
+					<input type="text" name="usr">
+				</div>
+				<div class="row">
+					<input type="password" name="ps">
+				</div>
+				<div class="row">
+					<button name="submit">Log In</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>

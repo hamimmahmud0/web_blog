@@ -1,0 +1,74 @@
+body {
+	background-color: #212121
+}
+
+
+
+
+@keyframes btn-portfolio-anim {
+	from {
+		left: -200%;
+
+	}
+
+	to {
+		left: -50%;
+	}
+}
+
+.btn-portfolio {
+	position: absolute;	
+	overflow: hidden;
+}
+
+.btn-portfolio .upper-border {
+	position: absolute;
+	height: 40%;
+	top:0;
+	width: calc(100% - 2px);
+	border-width: 1px 1px 0px 1px;
+	border-style: solid;
+	border-color: #fff;
+}
+
+.btn-portfolio .lower-border {
+	position: absolute;
+	height: 40%;
+	bottom: 0;
+	width:  calc(100% - 2px);
+	border-width: 0px 1px 1px 1px;
+	border-style: solid;
+	border-color: #fff;
+}
+
+.btn-portfolio .placeholder {
+	position: relative;
+	padding: 18px 50px;
+	z-index: 10;
+	color: #FFF;
+}
+
+.btn-portfolio .btn-background {
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 7px;
+	height: calc( 100% - 14px );
+	width: calc( 100% - 12px );
+	background-color: #fa4454;
+}
+
+.btn-portfolio .btn-background-slide {
+	clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+	background-color: #111;
+	width: 200%;
+	height: 120%;
+	position: absolute;
+	top: 0%;
+	left: -200%;
+	animation-name: btn-portfolio-anim;
+	animation-delay: 1s;
+	animation-duration: 1.5s;
+	animation-fill-mode: forwards;
+}

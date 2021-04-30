@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Freelancer - Hamim Mahmud</title>
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="home-style.css"/>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="menubar-mask"><div id="menubarmaskslider">
+			<img src="img/chevron-left-circle-regular-240.png" id="menu-closer" />
+		</div></div>
+		<div class="menubar">			
+			<div class="holder" id="menuholder">
+				<div class="menu-item mi-active"><a href="/" class="no-dec cl-black" id="btn-cnt-me">HOME</a></div>
+				<div class="menu-item"><a href="/projects" class="no-dec cl-black" id="btn-cnt-me">PROJECTS</a></div>
+				<a href="#cnt-me" class="no-dec cl-black" id="btn-cnt-me"><div class="menu-item">CONTACT ME</div></a>
+			</div>
+		</div>
+		<div class="navbar">
+			<div class="left-holder"><div class="element">
+				
+					<img id="menu-icon" src="img/menu-regular-180.png" />
+				
+			</div></div>
+			<div class="right-holder">
+				<div class="element">HOME</div>
+			</div>
+		</div>
+		<div class="content-holder">
+			<div class="home-image-holder">
+				<div class="image-mask-1"></div>
+				<div class="image-mask-2"></div>
+				<div class="vertical-bar"></div>
+				<div class="animating-rectangle-1"></div>
+				<div class="btn-portfolio">		
+					<div class="placeholder"> <a href="/projects"> PROJECTS </a> </div>
+					<div class="upper-border"></div>
+					<div class="lower-border"></div>
+					<div class="btn-background">			
+						<div class="btn-background-slide"></div>
+					</div>
+				</div>
+
+				<div class="opn-txt">
+					<div class="hi"><div class="txt">Hi,</div></div>
+					<div class="web-dev"><div class="txt">I'm {{data.ownerfname}}, a web developer.</div></div>
+				</div>
+
+				<div class="pft-txt">
+					<div class="chk">CHECK</div>
+					<div class="om">out my</div>
+				</div>
+
+				<img src="img/home-image.jpg" class="hm-img"/>
+			</div>
+			<div class="projects-holder">
+				<div class="vertical-bar bg-dark"></div>
+				<img src="img/ff.png" class="ff-icon" />
+				<div class="pjt-far">
+					<div class="txt cl-lt-red" id="pjt-slide-text"></div>
+					<div class="hz-anime-bar"></div>
+				</div>
+				<div class="paddong-top-pjt-hold"></div>
+				<div class="pjt-slide-show">
+					<div class="slider grab">
+						{% if card[0] %}
+						<div class="card">
+							<a href="{{ card[0][0] }}">					
+							<div class="img-container">
+							<div class="anime-mask"></div>
+								<img src="{{ card[0][3] }}" id="card-img-1"/></div>
+							<div class="descrip" id="des-1">
+								<h4>{{ card[0][1] }}</h4>
+								<h2>{{ card[0][2] }}</h2>
+							</div>
+							</a>
+							</div>
+						{% endif %}
+						{% if card[1] %}
+						<div class="card">
+							<a href="{{ card[1][0] }}">					
+							<div class="img-container">
+								<img src="{{ card[1][3] }}" id="card-img-1"/></div>
+							<div class="descrip" id="des-1">
+								<h4>{{ card[1][1] }}</h4>
+								<h2>{{ card[1][2] }}</h2>
+							</div>
+							</a>
+							</div>
+
+						{% endif %}
+						{% if card[2] %}
+							<div class="card">
+							<a href="{{ card[2][0] }}">					
+							<div class="img-container">
+								<img src="{{ card[2][3] }}" id="card-img-1"/></div>
+							<div class="descrip" id="des-1">
+								<h4>{{ card[2][1] }}</h4>
+								<h2>{{ card[2][2] }}</h2>
+							</div>
+							</a>
+							</div>
+
+							{% endif %}
+						
+					</div>
+
+
+				</div>
+				<div class="pjt-chk-more"> <a href="/projects" class="no-dec cl-lt-red"> BROWSE MORE >></a></div>
+			</div>
+			<div class="about-me bg-lt-red">
+				<div class="vertical-bar bg-dark"></div>
+				<h1 class="abt-me mg-l-60 pad-10 ">ABOUT ME</h1>	
+				<div class="horz-bar bg-dark"></div>
+				<div class="abt-me-txt">{{ data.aboutMePrologue }} </div>
+				<div class="ques">WHAT CAN I DO FOR YOU?</div>
+				<div class="ans">{{ data.aboutMeWhatCanI }}</div>
+			</div>
+			<div class="contact-me bg-dark-md">
+				<div class="vertical-bar">	</div>
+				<div class="fm">
+				<h2 class="cnt-me" id="cnt-me">CONTACT ME</h2>
+				<form action="/onsubmit" method="post">
+					<div class="fm-row">
+						<div class="col-2">
+							<input type="text" name="name" placeholder="Enter your name" required>
+						</div>
+
+						<div class="col-2">
+							<input type="email" name="email" placeholder="Enter your email" required>
+						</div>
+					</div>
+					<div class="fm-row">
+						<input name="subject" placeholder="Subject" required>
+					</div>
+					<div class="fm-row"><input type="text" name="description" placeholder="Enter your project description" required></div>
+					<div class="fm-row"><button id="submit" name="submit">SUBMIT</button></div>
+					<div class="horz-bar bg-white bar-cn">	</div>
+				</form>
+			</div>
+			</div>
+			<div class="footer bg-dark cl-white">
+				<div class="oner-nm">{{ data.ownerfullnameuppercase }}</div>
+				<dir class="social-link"> 
+					<a href="{{data.fblink}}" class="no-dec cl-white">
+						<img src="img/facebook-circle-logo-228.png"/>
+					</a>
+
+					<a href="{{data.instalink}}" class="no-dec cl-white"><img src="img/instagram-logo-228.png"/>
+					</a>
+
+				 </dir>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src="home-script.js"></script>
+	<script type="text/javascript">
+		var abtflag = true;
+		var cntflag = true;
+		$(window).scroll(function() {
+			var winH = $(window).height();
+			var sc = $(window).scrollTop();
+			$(".hm-img").css({
+				"width": (100 + sc/15).toString() + "%"
+			});
+
+			var alpha = 0;
+			let factor = .005;
+			alpha = sc*factor;
+			if(alpha > 1) {alpha = 1;}
+			let bgcolor = 'rgba(0, 0, 0, '+alpha.toString()+')';
+			//console.log(bgcolor);
+			$(".navbar").css({
+				"background-color" : bgcolor
+			});
+
+			/*
+			let cardPosTop = $(".anime-mask").offset().top ;
+			console.log(cardPosTop < sc);
+			*/
+
+			var animMaskLeft = -10 - sc*.2; 
+			animMaskLeft = animMaskLeft.toString();
+			$(".anime-mask").css({
+				'left' : animMaskLeft + '%'
+			});
+
+			var abtMeTop = abtMe.offset().top;			
+			if((abtMeTop < winH+sc) && abtflag) {
+				//console.log(true);
+				setInterval(abtMeAnimate,150);
+				abtflag = false;
+			}
+
+			var cntMeTop = cntMe.offset().top;			
+			if((cntMeTop < winH+sc) && cntflag) {
+				console.log(true);
+				setInterval(cntMeAnimate,150);
+				cntflag = false;
+			}
+
+
+		});
+		
+		$("#menu-icon").bind("click", function() {
+				console.log(100);
+				$(".menubar").css({
+					'z-index' : 1000
+				});
+
+				$(".menubar-mask").css({
+					'z-index' : 1000
+				});
+
+				$("#menuholder").css({
+					"animation-name" : "menuslidein",
+					"animation-duration" : ".5s",
+					"animation-fill-mode" : "forwards"
+				});
+
+				$("#menubarmaskslider").css({
+					"animation-name" : "menumaskslidein",
+					"animation-duration" : ".5s",
+					"animation-fill-mode" : "forwards"
+				});
+			});
+
+		$("#menu-closer").bind('click', function() {
+
+				$("#menuholder").css({
+					"animation-name" : "menuslideout",
+					"animation-duration" : ".5s",
+					"animation-fill-mode" : "forwards"
+				});
+
+				$("#menubarmaskslider").css({
+					"animation-name" : "menumaskslideout",
+					"animation-duration" : ".5s",
+					"animation-fill-mode" : "forwards"
+				});
+
+				setTimeout(function() {
+
+				$(".menubar").css({
+					'z-index' : 0
+				});
+
+				$(".menubar-mask").css({
+					'z-index' : 0
+				});
+
+			},500);
+
+
+
+		});
+
+		$(".menu-item").click(function() {
+
+				$("#menuholder").css({
+					"animation-name" : "menuslideout",
+					"animation-duration" : ".5s",
+					"animation-fill-mode" : "forwards"
+				});
+
+				$("#menubarmaskslider").css({
+					"animation-name" : "menumaskslideout",
+					"animation-duration" : ".5s",
+					"animation-fill-mode" : "forwards"
+				});
+
+				setTimeout(function() {
+
+				$(".menubar").css({
+					'z-index' : 0
+				});
+
+				$(".menubar-mask").css({
+					'z-index' : 0
+				});
+
+			},500);
+
+
+
+		});
+
+
+			
+	</script>
+</body>
+</html>

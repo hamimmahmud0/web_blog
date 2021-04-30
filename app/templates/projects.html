@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Freelancer - Hamim Mahmud</title>
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="home-style.css"/>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="menubar-mask"><div id="menubarmaskslider">
+			<img src="img/chevron-left-circle-regular-240.png" id="menu-closer" />
+		</div></div>
+		<div class="menubar">			
+			<div class="holder" id="menuholder">
+				<div class="menu-item "><a href="/" class="no-dec cl-black" id="btn-cnt-me">HOME</a></div>
+				<div class="menu-item"><a href="/projects" class="no-dec cl-black" id="btn-cnt-me mi-active">PROJECTS</a></div>
+				<a href="#cnt-me" class="no-dec cl-black" id="btn-cnt-me"><div class="menu-item">CONTACT ME</div></a>
+			</div>
+		</div>
+		<div class="navbar bg-dark">
+			<div class="left-holder"><div class="element">
+				
+					<img id="menu-icon" src="img/menu-regular-180.png" />
+				
+			</div></div>
+			<div class="right-holder">
+				<div class="element">PROJECTS</div>
+			</div>
+		</div>
+		<div class="content-holder">
+			<div id="project-list">
+				
+
+
+
+
+
+
+			</div>
+			<div class="footer bg-dark cl-white">
+				<div class="oner-nm">{{ data.ownerfullnameuppercase }}</div>
+				<dir class="social-link"> 
+					<a href="#" class="no-dec cl-white">
+						<img src="img/facebook-circle-logo-228.png"/>
+					</a>
+
+					<a href="#" class="no-dec cl-white"><img src="img/instagram-logo-228.png"/>
+					</a>
+
+				 </dir>
+			</div></div>
+
+	</div>
+
+	<script type="text/javascript" src="home-script.js"></script>
+	<script type="text/javascript" src="project-script.js"></script>
+	<script type="text/javascript" src="KataDOM.js"></script>
+	<script type="text/javascript">
+		
+		$("#menu-icon").bind("click", function() {
+				console.log(100);
+				$(".menubar").css({
+					'z-index' : 1000
+				});
+
+				$(".menubar-mask").css({
+					'z-index' : 1000
+				});
+
+				$("#menuholder").css({
+					"animation-name" : "menuslidein",
+					"animation-duration" : ".5s",
+					"animation-fill-mode" : "forwards"
+				});
+
+				$("#menubarmaskslider").css({
+					"animation-name" : "menumaskslidein",
+					"animation-duration" : ".5s",
+					"animation-fill-mode" : "forwards"
+				});
+			});
+
+		$("#menu-closer").bind('click', function() {
+
+				$("#menuholder").css({
+					"animation-name" : "menuslideout",
+					"animation-duration" : ".5s",
+					"animation-fill-mode" : "forwards"
+				});
+
+				$("#menubarmaskslider").css({
+					"animation-name" : "menumaskslideout",
+					"animation-duration" : ".5s",
+					"animation-fill-mode" : "forwards"
+				});
+
+				setTimeout(function() {
+
+				$(".menubar").css({
+					'z-index' : 0
+				});
+
+				$(".menubar-mask").css({
+					'z-index' : 0
+				});
+
+			},500);
+
+
+
+		});
+
+		$(".menu-item").click(function() {
+
+				$("#menuholder").css({
+					"animation-name" : "menuslideout",
+					"animation-duration" : ".5s",
+					"animation-fill-mode" : "forwards"
+				});
+
+				$("#menubarmaskslider").css({
+					"animation-name" : "menumaskslideout",
+					"animation-duration" : ".5s",
+					"animation-fill-mode" : "forwards"
+				});
+
+				setTimeout(function() {
+
+				$(".menubar").css({
+					'z-index' : 0
+				});
+
+				$(".menubar-mask").css({
+					'z-index' : 0
+				});
+
+			},500);
+
+
+
+		});
+
+		var p = 0;
+		template = '';
+
+		$.get('/projects/template', function(data,status) {
+			template = data;
+
+		});
+
+		$.get('/projects/get?p='+p.toString(), function(data,status) {
+
+				console.log(p)
+			p += 1;
+			if(data != []) {
+			data.forEach(function(val) {
+				var tmp = template;
+				tmp = tmp.replace(/::link:/,val[2]);
+				tmp = tmp.replace(/::label:/,val[0]);
+				tmp = tmp.replace(/::date:/,val[1]);
+				tmp = tmp.replace(/::img:/,val[3]);
+				$("#project-list").append(tmp);
+			});}
+
+		});
+
+		$(window).scroll(function() {
+
+			var sc = $(window).scrollTop();
+			var h = $(window).height();
+			var fOT = $(".footer").offset().top;
+
+			if(fOT < sc+h+100) {
+
+				$.get('/projects/get?p='+p.toString(), function(data,status) {
+					console.log('/projects/get?p='+p.toString())
+					p += 1;
+					console.log(data)
+					if(data != []) {
+					data.forEach(function(val) {
+						var tmp = template;
+						tmp = tmp.replace(/::link:/,val[2]);
+						tmp = tmp.replace(/::label:/,val[0]);
+						tmp = tmp.replace(/::date:/,val[1]);
+						tmp = tmp.replace(/::img:/,val[3]);
+						$("#project-list").append(tmp);
+					});}
+
+				});
+			}
+		});
+
+			
+	</script>
+</body>
+</html>

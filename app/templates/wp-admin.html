@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %} Admin Panel - {{data.ownerfullnameuppercase}} {% endblock %}
+{% block css %} 
+	<link rel="stylesheet" href="home-style.css"/> {% endblock %}
+{% block body %}
+
+<div class="container-sm project-form">
+	<div class="row align-item-center">
+		<div class="col form-holder">
+			<form action="/uploadproject" method="post" enctype="multipart/form-data" accept="image/*">
+				<h3>Upload a New Project:</h3>
+<input class="form-control" type="text" placeholder="Project Link" name="link" aria-label="link">
+<input class="form-control" type="file" placeholder="Image less than 100kb" aria-label="link" name="image">
+<input class="form-control" type="date" placeholder="Date" aria-label="link" name="date">
+<input class="form-control" type="text" placeholder="Label" aria-label="link
+" name="label">
+<input class="form-control" type="submit" placeholder="Upload" aria-label="submit">
+			</form>
+		</div>
+	</div>
+</div>
+<hr>
+<div class="container-fluid project-list">
+	<h2>Projects</h2>
+	<table class="table">
+		<thead><tr>
+			<th scope="col">#</th>
+			<th scope="col">Label</th>
+			<th scope="col">Link</th>
+			<th scope="col">Image</th>
+			<th scope="col">Date</th>
+			<th scope="col">Action</th>
+	</tr></thead>
+	<tbody>
+		{% for tr in projects %}
+		<tr>
+			{% for td in tr%}
+		<td> {{td}} </td>
+		{% endfor %}
+		<td><a href="/deleteproject?rowid={{tr[0]}}" class="link-primary">Delete</a></td>
+	</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>
+<hr>
+
+<div class="container-fluid contact-list">
+	<h2>Contact Requests</h2>
+	<table class="table">
+		<thead><tr>
+			<th scope="col">#</th>
+			<th scope="col">Name</th>
+			<th scope="col">Email</th>
+			<th scope="col">Subject</th>
+			<th scope="col">Description</th>
+			<th scope="col">Action</th>
+	</tr></thead>
+	<tbody>
+		{% for tr in contacts %}
+		<tr>
+			{% for td in tr%}
+		<td> {{td}} </td>
+		{% endfor %}
+		<td><a href="/deletecontact?rowid={{tr[0]}}" class="link-primary">Delete</a></td>
+	</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>
+<hr>
+{% endblock %}
